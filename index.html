@@ -1,5 +1,196 @@
-<html>
-  <body>
-  <h1> Welcome to Jonathan Lopez's Portfolio. </h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jonathan Lopez — HTML Profile</title>
+  <meta name="description" content="Resume-style HTML profile for Jonathan Lopez: education, experience, skills, and contact details." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111722;
+      --ink: #e8edf4;
+      --muted: #a9b3c1;
+      --accent: #60a5fa;
+      --chip: #1b2331;
+      --border: #1f2a3a;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Noto Sans, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 10% -10%, #152033 0%, #0b0f14 55%);
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+    header.profile {
+      background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(96,165,250,0.02));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+    .avatar {
+      width: 100px; height: 100px; border-radius: 16px; background: var(--chip);
+      display: grid; place-items: center; border: 1px solid var(--border);
+      font-weight: 700; color: var(--muted);
+    }
+    .id h1 { margin: 0; font-size: 1.9rem; letter-spacing: 0.2px; }
+    .id p { margin: 6px 0 0; color: var(--muted); }
+    .actions { display: flex; gap: 10px; align-items: center; }
+    .btn {
+      appearance: none; border: 1px solid var(--border); background: var(--panel);
+      color: var(--ink); padding: 10px 14px; border-radius: 12px; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
+    }
+    .btn:hover { border-color: #2a3a52; box-shadow: 0 0 0 3px rgba(96,165,250,0.15) inset; }
+
+    main { margin-top: 28px; display: grid; gap: 20px; grid-template-columns: 1.2fr .8fr; }
+    section.card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+    }
+    h2 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: 0.3px; }
+    .item { padding: 14px 0; border-top: 1px dashed var(--border); }
+    .item:first-child { border-top: none; padding-top: 0; }
+    .title { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
+    .title strong { font-size: 1.02rem; }
+    .meta { color: var(--muted); font-size: 0.95rem; }
+    ul { margin: 8px 0 0 18px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; font-size: 0.92rem; color: var(--ink); }
+
+    footer { margin-top: 18px; color: var(--muted); text-align: center; font-size: 0.9rem; }
+
+    /* Contact grid */
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .contact-item { background: var(--chip); border: 1px solid var(--border); padding: 10px 12px; border-radius: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .contact-item a { color: var(--ink); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* Print styles */
+    @media print {
+      body { background: #fff; color: #111; }
+      header.profile, section.card { background: #fff; border: 1px solid #ddd; }
+      .btn, .actions { display: none !important; }
+      .container { margin: 0; max-width: 100%; padding: 0; }
+      main { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .avatar { background: #f4f4f4; color: #666; border-color: #eee; }
+    }
+
+    @media (max-width: 860px) {
+      header.profile { grid-template-columns: 70px 1fr; }
+      .actions { grid-column: 1 / -1; }
+      main { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="profile" aria-labelledby="name">
+      <div class="avatar" aria-hidden="true">JL</div>
+      <div class="id">
+        <h1 id="name">Jonathan Lopez</h1>
+        <p>High School Student · Aspiring Software Developer · GameMaker Enthusiast</p>
+        <div class="contact-grid" style="margin-top:12px">
+          <div class="contact-item">📍 Vernon Hills, Illinois</div>
+          <div class="contact-item"><a href="tel:+18479700547">📞 +1&nbsp;847‑970‑0547</a></div>
+          <div class="contact-item"><a href="mailto:jonjonglopez@gmail.com">✉️ jonjonglopez@gmail.com</a></div>
+          <div class="contact-item"><a href="#" onclick="window.print(); return false;">🖨️ Print / Save as PDF</a></div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="mailto:jonjonglopez@gmail.com">Email</a>
+        <a class="btn" href="tel:+18479700547">Call</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Left column -->
+      <section class="card" aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <div class="item">
+          <div class="title">
+            <strong>Vernon Hills High School</strong>
+            <span class="meta">Vernon Hills, Illinois · 2022–2026</span>
+          </div>
+          <ul>
+            <li>4.0 cumulative GPA</li>
+            <li>AP Scholar with Distinction</li>
+            <li>Yearly Honor Roll</li>
+            <li>Computer Science Club</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <div class="item">
+          <div class="title">
+            <strong>Coding Experience — GameMaker Engine</strong>
+            <span class="meta">Vernon Hills · 2024–Present</span>
+          </div>
+          <ul>
+            <li>Self-studied the GameMaker engine for school purposes and personal projects.</li>
+            <li>Built projects ranging from side‑scrolling platformers to top‑down dungeon crawlers.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Right column -->
+      <section class="card" aria-labelledby="skills">
+        <h2 id="skills">Technical Skills</h2>
+        <div class="chips" role="list" aria-label="Skills">
+          <span class="chip" role="listitem">Java</span>
+          <span class="chip" role="listitem">Python</span>
+          <span class="chip" role="listitem">JavaScript</span>
+          <span class="chip" role="listitem">GameMaker</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="languages">
+        <h2 id="languages">Languages</h2>
+        <div class="chips" role="list" aria-label="Languages">
+          <span class="chip" role="listitem">English — Fluent</span>
+          <span class="chip" role="listitem">Spanish — Intermediate</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="volunteer">
+        <h2 id="volunteer">Volunteer Experience</h2>
+        <div class="item">
+          <div class="title">
+            <strong>Volunteer</strong>
+            <span class="meta">Local Church</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="interests">
+        <h2 id="interests">Interests & Hobbies</h2>
+        <ul>
+          <li>Learning and building games with GameMaker.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Jonathan Lopez · HTML Resume Profile
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
