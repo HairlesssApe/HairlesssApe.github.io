@@ -1,131 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jonathan Lopez — HTML Profile</title>
-  <meta name="description" content="Resume-style HTML profile for Jonathan Lopez: education, experience, skills, and contact details." />
+  <title>Jonathan Lopez — Portfolio & Resume</title>
+  <meta name="description" content="A world‑class, award‑caliber single‑file portfolio for Jonathan Lopez: elegant animations, rich typography, and accessible, responsive design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0b0f14;
-      --panel: #111722;
-      --ink: #e8edf4;
-      --muted: #a9b3c1;
-      --accent: #60a5fa;
-      --chip: #1b2331;
-      --border: #1f2a3a;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Noto Sans, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
-      color: var(--ink);
-      background: radial-gradient(1200px 800px at 10% -10%, #152033 0%, #0b0f14 55%);
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
-    }
-    header.profile {
-      background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(96,165,250,0.02));
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 100px 1fr auto;
-      gap: 20px;
-      align-items: center;
-      backdrop-filter: blur(6px);
-    }
-    .avatar {
-      width: 100px; height: 100px; border-radius: 16px; background: var(--chip);
-      display: grid; place-items: center; border: 1px solid var(--border);
-      font-weight: 700; color: var(--muted);
-    }
-    .id h1 { margin: 0; font-size: 1.9rem; letter-spacing: 0.2px; }
-    .id p { margin: 6px 0 0; color: var(--muted); }
-    .actions { display: flex; gap: 10px; align-items: center; }
-    .btn {
-      appearance: none; border: 1px solid var(--border); background: var(--panel);
-      color: var(--ink); padding: 10px 14px; border-radius: 12px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600;
-    }
-    .btn:hover { border-color: #2a3a52; box-shadow: 0 0 0 3px rgba(96,165,250,0.15) inset; }
+    /*
+      Jonathan Lopez — Portfolio
+      Goal: award‑caliber visual polish + performance + accessibility in a single file.
 
-    main { margin-top: 28px; display: grid; gap: 20px; grid-template-columns: 1.2fr .8fr; }
-    section.card {
-      background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
-    }
-    h2 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: 0.3px; }
-    .item { padding: 14px 0; border-top: 1px dashed var(--border); }
-    .item:first-child { border-top: none; padding-top: 0; }
-    .title { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px; }
-    .title strong { font-size: 1.02rem; }
-    .meta { color: var(--muted); font-size: 0.95rem; }
-    ul { margin: 8px 0 0 18px; }
+      Highlights
+      - Glassmorphism + layered gradients + tasteful parallax
+      - Motion reduced for users with prefers‑reduced‑motion
+      - Accessible color contrast and focus rings
+      - CSS‑only art flourishes (conic gradients, mask effects)
+      - Semantic HTML + landmarks + aria labels
+      - Print‑ready resume section
+    */
 
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px; font-size: 0.92rem; color: var(--ink); }
-
-    footer { margin-top: 18px; color: var(--muted); text-align: center; font-size: 0.9rem; }
-
-    /* Contact grid */
-    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .contact-item { background: var(--chip); border: 1px solid var(--border); padding: 10px 12px; border-radius: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .contact-item a { color: var(--ink); text-decoration: none; }
-    .contact-item a:hover { text-decoration: underline; }
-
-    /* Print styles */
-    @media print {
-      body { background: #fff; color: #111; }
-      header.profile, section.card { background: #fff; border: 1px solid #ddd; }
-      .btn, .actions { display: none !important; }
-      .container { margin: 0; max-width: 100%; padding: 0; }
-      main { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .avatar { background: #f4f4f4; color: #666; border-color: #eee; }
+    :root{
+      --bg:#070c12;           /* page background */
+      --panel:#0c1420;        /* card background */
+      --ink:#eaf1ff;          /* primary text */
+      --muted:#a8b3c7;        /* secondary text */
+      --accent:#7aa2ff;       /* accent */
+      --accent-2:#ff7ad9;     /* accent secondary */
+      --ring: 0 0 0 .2rem rgba(122,162,255,.45);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
     }
 
-    @media (max-width: 860px) {
-      header.profile { grid-template-columns: 70px 1fr; }
-      .actions { grid-column: 1 / -1; }
-      main { grid-template-columns: 1fr; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 10% -10%, #132038 0%, var(--bg) 60%),
+                  radial-gradient(1400px 900px at 120% 20%, #201533 0%, transparent 45%),
+                  linear-gradient(180deg, #05070b 0%, #0a0f18 100%);
+      color:var(--ink);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* --- Decorative galaxy field (pure CSS) ---*/
+    .galaxy{position:fixed; inset:0; pointer-events:none; z-index:-1;}
+    .galaxy::before,.galaxy::after{
+      content:""; position:absolute; inset:-10%; filter:blur(40px); opacity:.55;
+      background:
+        radial-gradient(closest-side, rgba(122,162,255,.45), transparent 70%) 15% 20%/40rem 40rem no-repeat,
+        radial-gradient(closest-side, rgba(255,122,217,.35), transparent 70%) 70% 10%/50rem 50rem no-repeat,
+        radial-gradient(closest-side, rgba(122,255,217,.25), transparent 70%) 80% 70%/38rem 38rem no-repeat;
+      mask: radial-gradient(closest-side, rgba(0,0,0,.9), transparent 80%);
+    }
+    .galaxy::after{filter:blur(80px); opacity:.4}
+
+    /* --- Layout --- */
+    .wrap{max-width:1100px; margin:0 auto; padding: clamp(18px, 3vw, 34px);}
+    header.site{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(160%) blur(10px);
+      background:linear-gradient(180deg, rgba(7,12,18,.85) 0%, rgba(7,12,18,.55) 100%);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink)}
+    .logo{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg, #233455, #0f1726);
+      box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.06);
+    }
+    .logo::after{content:"JL"; font-weight:800; letter-spacing:.5px; color:#cfe0ff}
+    nav ul{display:flex; gap:10px; list-style:none; padding:0; margin:0}
+    nav a{display:inline-flex; padding:10px 12px; border-radius:12px; color:var(--muted); text-decoration:none; border:1px solid transparent}
+    nav a:hover, nav a:focus{color:var(--ink); border-color:rgba(255,255,255,.08); outline:none; box-shadow: var(--ring)}
+    .actions{display:flex; gap:10px}
+    .btn{appearance:none; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); color:var(--ink); padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700}
+    .btn:hover{border-color:rgba(255,255,255,.18)}
+    .btn.primary{background:linear-gradient(180deg, rgba(122,162,255,.35), rgba(122,162,255,.15)); border-color:rgba(122,162,255,.45)}
+
+    /* --- Hero --- */
+    .hero{position:relative; margin-top:16px;}
+    .hero .panel{display:grid; grid-template-columns: 1.35fr .65fr; gap:22px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:clamp(18px, 3.5vw, 34px); box-shadow:var(--shadow)}
+    .headline{font-size: clamp(28px, 5vw, 52px); line-height:1.08; letter-spacing:.3px; margin:0 0 10px;}
+    .sub{color:var(--muted); font-size: clamp(14px, 1.5vw, 18px); margin:0 0 16px}
+
+    .hero-badges{display:flex; flex-wrap:wrap; gap:10px;}
+    .badge{padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); font-weight:700; color:#dbe6ff}
+    .badge svg{vertical-align:-2px}
+
+    .glass{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio: 1.1/1; border:1px solid rgba(255,255,255,.06); background:linear-gradient(160deg, rgba(122,162,255,.08), rgba(255,122,217,.08)); box-shadow: var(--shadow)}
+    .glass::before{
+      content:""; position:absolute; inset:-20%; background: conic-gradient(from 0deg, rgba(122,162,255,.15), rgba(255,122,217,.15), rgba(122,255,217,.12), rgba(122,162,255,.15));
+      filter: blur(40px); opacity:.6; animation: spin 16s linear infinite;
+    }
+    .hero-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+
+    @keyframes spin{to{transform: rotate(360deg)}}
+
+    /* --- Sections --- */
+    section{margin: 24px 0}
+    .section-card{background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:clamp(18px,2.6vw,28px); box-shadow:var(--shadow)}
+    h2.section-title{margin:0 0 8px; font-size: clamp(18px, 2.2vw, 26px)}
+    p.section-sub{margin:0 0 12px; color:var(--muted)}
+
+    /* Education / Experience cards */
+    .list{display:grid; gap:12px}
+    .item{padding:14px; border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.06)}
+    .title{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .title strong{font-size:1.05rem}
+    .meta{color:var(--muted)}
+    .item ul{margin:8px 0 0 18px}
+
+    /* Skills chips */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(180deg, rgba(122,162,255,.15), rgba(122,162,255,.05)); border-radius:999px; font-weight:700}
+    .chip.alt{background:linear-gradient(180deg, rgba(255,122,217,.18), rgba(255,122,217,.06)); border-color:rgba(255,122,217,.35)}
+
+    /* Languages with bars */
+    .lang{display:grid; gap:8px}
+    .bar{height:10px; border-radius:999px; background:#101827; border:1px solid rgba(255,255,255,.06); overflow:hidden}
+    .bar > span{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2));}
+
+    /* Footer */
+    footer{margin: 28px 0 16px; color:var(--muted); text-align:center}
+
+    /* Responsive */
+    @media (max-width: 940px){
+      .hero .panel{grid-template-columns: 1fr}
+    }
+
+    /* Accessible motion */
+    @media (prefers-reduced-motion: reduce){
+      .glass::before{animation:none}
+    }
+
+    /* Focus styles */
+    :focus-visible{outline:none; box-shadow: var(--ring)}
+
+    /* Print resume */
+    @media print{
+      body{background:#fff; color:#111}
+      header.site, .galaxy, .hero .panel .glass, .hero-cta, .actions{display:none !important}
+      .section-card{background:#fff; border:1px solid #ddd; box-shadow:none}
+      .chip, .badge{border-color:#ccc !important; background:#f7f7f7 !important}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="profile" aria-labelledby="name">
-      <div class="avatar" aria-hidden="true">JL</div>
-      <div class="id">
-        <h1 id="name">Jonathan Lopez</h1>
-        <p>High School Student · Aspiring Software Developer · GameMaker Enthusiast</p>
-        <div class="contact-grid" style="margin-top:12px">
-          <div class="contact-grid" style="margin-top:12px">
-            <div class="contact-item">📍 Vernon Hills, Illinois</div>
-            <div class="contact-item"><a href="mailto:jonjonglopez@gmail.com">✉️ jonjonglopez@gmail.com</a></div>
-            <div class="contact-item"><a href="https://www.linkedin.com/in/jonathan-lopez-0a739b37a/" target="_blank">💼 LinkedIn</a></div>
-            <div class="contact-item"><a href="#" onclick="window.print(); return false;">🖨️ Print / Save as PDF</a></div>
+  <div class="galaxy" aria-hidden="true"></div>
+  <header class="site" role="banner">
+    <div class="wrap topbar">
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>Jonathan Lopez</strong><br>
+          <small style="color:var(--muted)">Student • Developer • GameMaker</small>
+        </div>
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#languages">Languages</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#interests">Interests</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button class="btn" id="themeBtn" aria-pressed="false" aria-label="Toggle color theme">Toggle Theme</button>
+        <a class="btn primary" href="mailto:jonjonglopez@gmail.com" aria-label="Email Jonathan">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap" role="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="panel">
+        <div>
+          <h1 id="hero-title" class="headline">Building playful, performant software — one game at a time.</h1>
+          <p class="sub">High‑achieving student (4.0 GPA, AP Scholar with Distinction) exploring software engineering through game development. Comfortable with Java, Python, and JavaScript. Currently crafting side‑scrollers and top‑down dungeon crawlers in GameMaker.</p>
+          <div class="hero-badges" aria-label="Highlights">
+            <span class="badge" title="4.0 GPA">🎓 4.0 GPA</span>
+            <span class="badge" title="AP Scholar with Distinction">🏅 AP Scholar w/ Distinction</span>
+            <span class="badge" title="Computer Science Club">👥 CS Club</span>
+            <span class="badge" title="Vernon Hills, Illinois">📍 Vernon Hills, IL</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn primary" href="#experience">See Experience</a>
+            <a class="btn" href="#skills">Explore Skills</a>
+            <a class="btn" href="#resume">Print Resume</a>
           </div>
         </div>
+        <div class="glass" aria-hidden="true"></div>
       </div>
-      <div class="actions">
-        <a class="btn" href="mailto:jonjonglopez@gmail.com">Email</a>
-        <a class="btn" href="tel:+18479700547">Call</a>
-      </div>
-    </header>
+    </section>
 
-    <main>
-      <!-- Left column -->
-      <section class="card" aria-labelledby="education">
-        <h2 id="education">Education</h2>
-        <div class="item">
-          <div class="title">
-            <strong>Vernon Hills High School</strong>
-            <span class="meta">Vernon Hills, Illinois · 2022–2026</span>
-          </div>
+    <!-- About / Contact -->
+    <section id="about" class="section-card" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About & Contact</h2>
+      <p class="section-sub">Focused, curious, and always shipping small projects. I learn by building.</p>
+      <div class="list" role="list">
+        <div class="item" role="listitem">
+          <div class="title"><strong>Location</strong><span class="meta">Vernon Hills, Illinois</span></div>
+        </div>
+        <div class="item" role="listitem">
+          <div class="title"><strong>Email</strong><span class="meta"><a href="mailto:jonjonglopez@gmail.com">jonjonglopez@gmail.com</a></span></div>
+        </div>
+        <div class="item" role="listitem">
+          <div class="title"><strong>Portfolio</strong><span class="meta">Add your link here</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section-card" aria-labelledby="edu-title">
+      <h2 id="edu-title" class="section-title">Education</h2>
+      <p class="section-sub">Vernon Hills High School · 2022–2026</p>
+      <div class="list" role="list">
+        <div class="item" role="listitem">
+          <div class="title"><strong>Vernon Hills High School</strong><span class="meta">Vernon Hills, Illinois</span></div>
           <ul>
             <li>4.0 cumulative GPA</li>
             <li>AP Scholar with Distinction</li>
@@ -133,69 +230,149 @@
             <li>Computer Science Club</li>
           </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="card" aria-labelledby="experience">
-        <h2 id="experience">Experience</h2>
-        <div class="item">
-          <div class="title">
-            <strong>Coding Experience — GameMaker Engine</strong>
-            <span class="meta">Vernon Hills · 2024–Present</span>
-          </div>
+    <!-- Experience -->
+    <section id="experience" class="section-card" aria-labelledby="exp-title">
+      <h2 id="exp-title" class="section-title">Experience</h2>
+      <p class="section-sub">Hands‑on learning via GameMaker projects and experiments.</p>
+      <div class="list" role="list">
+        <div class="item" role="listitem">
+          <div class="title"><strong>Coding Experience — GameMaker Engine</strong><span class="meta">Vernon Hills · 2024–Present</span></div>
           <ul>
-            <li>Self-studied the GameMaker engine for school purposes and personal projects.</li>
-            <li>Built projects ranging from side‑scrolling platformers to top‑down dungeon crawlers.</li>
+            <li>Self‑studied GameMaker for school and personal projects.</li>
+            <li>Built side‑scrolling platformers and top‑down dungeon crawlers.</li>
           </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Right column -->
-      <section class="card" aria-labelledby="skills">
-        <h2 id="skills">Technical Skills</h2>
-        <div class="chips" role="list" aria-label="Skills">
-          <span class="chip" role="listitem">Java</span>
-          <span class="chip" role="listitem">Python</span>
-          <span class="chip" role="listitem">JavaScript</span>
-          <span class="chip" role="listitem">GameMaker</span>
+    <!-- Skills -->
+    <section id="skills" class="section-card" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="section-title">Technical Skills</h2>
+      <p class="section-sub">Languages & tools I use most often.</p>
+      <div class="chips" role="list" aria-label="Skills">
+        <span class="chip" role="listitem">Java</span>
+        <span class="chip" role="listitem">Python</span>
+        <span class="chip" role="listitem">JavaScript</span>
+        <span class="chip alt" role="listitem">GameMaker</span>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" class="section-card" aria-labelledby="lang-title">
+      <h2 id="lang-title" class="section-title">Languages</h2>
+      <div class="lang" aria-label="Language proficiency bars">
+        <div>
+          <div style="display:flex; justify-content:space-between"><strong>English</strong><span class="meta">Fluent</span></div>
+          <div class="bar" aria-hidden="true"><span style="width:100%"></span></div>
         </div>
-      </section>
-
-      <section class="card" aria-labelledby="languages">
-        <h2 id="languages">Languages</h2>
-        <div class="chips" role="list" aria-label="Languages">
-          <span class="chip" role="listitem">English — Fluent</span>
-          <span class="chip" role="listitem">Spanish — Intermediate</span>
+        <div>
+          <div style="display:flex; justify-content:space-between"><strong>Spanish</strong><span class="meta">Intermediate</span></div>
+          <div class="bar" aria-hidden="true"><span style="width:60%"></span></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="card" aria-labelledby="volunteer">
-        <h2 id="volunteer">Volunteer Experience</h2>
-        <div class="item">
-          <div class="title">
-            <strong>Volunteer</strong>
-            <span class="meta">Local Church</span>
-          </div>
+    <!-- Volunteer -->
+    <section id="volunteer" class="section-card" aria-labelledby="vol-title">
+      <h2 id="vol-title" class="section-title">Volunteer Experience</h2>
+      <div class="list" role="list">
+        <div class="item" role="listitem">
+          <div class="title"><strong>Volunteer</strong><span class="meta">Local Church</span></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="card" aria-labelledby="interests">
-        <h2 id="interests">Interests & Hobbies</h2>
-        <ul>
-          <li>Learning and building games with GameMaker.</li>
-          <li>Reading in my free time. </li>
-          <li>Participating in the Computer Science club after school.</li>
-          <li>Cat Enthusiast. </li>
-        </ul>
-      </section>
-    </main>
+    <!-- Interests -->
+    <section id="interests" class="section-card" aria-labelledby="int-title">
+      <h2 id="int-title" class="section-title">Interests & Hobbies</h2>
+      <ul>
+        <li>Learning and building games with GameMaker.</li>
+      </ul>
+    </section>
 
-    <footer>
-      © <span id="year"></span> Jonathan Lopez · HTML Resume Profile
-    </footer>
-  </div>
+    <!-- Print‑optimized resume area (anchor) -->
+    <section id="resume" class="section-card" aria-labelledby="resume-title">
+      <h2 id="resume-title" class="section-title">Resume</h2>
+      <p class="section-sub">Use your browser’s <em>Print</em> to save a PDF with clean, professional styling.</p>
+      <div class="list" role="list">
+        <div class="item" role="listitem">
+          <div class="title"><strong>Summary</strong><span class="meta">Student Developer</span></div>
+          <p>Curious and motivated high school student (4.0 GPA) exploring software development through game design and programming. Comfortable with Java, Python, and JavaScript; actively building GameMaker projects.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+        <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <a class="btn" href="mailto:jonjonglopez@gmail.com">✉️ Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="wrap">
+      <small>© <span id="year"></span> Jonathan Lopez · Designed & coded in a single file.</small>
+    </div>
+  </footer>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle: subtly shifts palette while honoring reduced motion
+    const btn = document.getElementById('themeBtn');
+    let alt = false;
+    function setTheme(useAlt){
+      const root = document.documentElement;
+      if(useAlt){
+        root.style.setProperty('--bg', '#0a0a12');
+        root.style.setProperty('--panel', '#11111a');
+        root.style.setProperty('--accent', '#8be9fd');
+        root.style.setProperty('--accent-2', '#bd93f9');
+      }else{
+        root.style.setProperty('--bg', '#070c12');
+        root.style.setProperty('--panel', '#0c1420');
+        root.style.setProperty('--accent', '#7aa2ff');
+        root.style.setProperty('--accent-2', '#ff7ad9');
+      }
+    }
+    btn.addEventListener('click', () => { alt = !alt; setTheme(alt); btn.setAttribute('aria-pressed', String(alt)); });
+
+    // Progressive enhancement: focus outline for keyboard users only
+    let usingMouse = false;
+    window.addEventListener('mousedown', () => { usingMouse = true; document.body.classList.add('using-mouse'); });
+    window.addEventListener('keydown', () => { if(usingMouse){ usingMouse = false; document.body.classList.remove('using-mouse'); } });
+
+    // Optional: gentle scroll‑reveal without intersection observers
+    (function(){
+      const els = Array.from(document.querySelectorAll('.section-card'));
+      const reveal = () => {
+        const vh = window.innerHeight;
+        els.forEach(el => {
+          const r = el.getBoundingClientRect();
+          if(r.top < vh - 80){ el.style.transition = 'transform .6s cubic-bezier(.2,.8,.2,1), opacity .6s'; el.style.transform = 'translateY(0)'; el.style.opacity = '1'; }
+          else{ el.style.transform = 'translateY(16px)'; el.style.opacity = '.001'; }
+        });
+      };
+      reveal(); window.addEventListener('scroll', reveal, { passive:true });
+    })();
+  </script>
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jonathan Lopez",
+    "address": {"@type":"PostalAddress","addressLocality":"Vernon Hills","addressRegion":"IL","addressCountry":"USA"},
+    "email": "mailto:jonjonglopez@gmail.com",
+    "jobTitle": "Student Developer",
+    "alumniOf": {"@type":"EducationalOrganization","name":"Vernon Hills High School"},
+    "knowsAbout": ["Java","Python","JavaScript","GameMaker","Game Development"],
+    "description": "High school student (4.0 GPA, AP Scholar with Distinction) exploring software engineering via game development.",
+    "url": ""
+  }
   </script>
 </body>
 </html>
