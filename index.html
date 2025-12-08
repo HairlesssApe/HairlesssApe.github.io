@@ -498,3 +498,188 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio – Projects</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f14;
+      color: white;
+    }
+
+    nav {
+      background: #14141d;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .grid {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #181826;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .muted {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* ✅ PROJECT IMAGE GRID */
+    .project-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .project-grid img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    /* ✅ FULLSCREEN LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 100;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 0 40px black;
+    }
+
+    .lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      cursor: pointer;
+      color: white;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ NAV BAR -->
+  <nav>
+    <a href="#projects">Projects</a>
+  </nav>
+
+  <!-- ✅ MAIN CONTENT -->
+  <div class="grid">
+
+    <!-- ✅ PROJECTS SECTION -->
+    <section class="card" id="projects">
+      <h3>Projects</h3>
+
+      <div class="entry">
+        <div class="row">
+          <strong>In The Wake of Poseidon (Temporary Name)</strong>
+          <span class="muted">2025</span>
+        </div>
+
+        <p class="muted">
+          A top-down action-adventure game developed in GameMaker. Players explore farmlands,
+          forests, and interior spaces while battling enemies, completing objectives, and
+          uncovering a larger mythological mystery inspired by Poseidon.
+        </p>
+
+        <!-- ✅ CLICKABLE IMAGE GRID -->
+        <div class="project-grid">
+          <img src="Screenshot 2025-12-08 114652.png" onclick="openLightbox(this)">
+          <img src="Screenshot 2025-12-08 115413.png" onclick="openLightbox(this)">
+          <img src="Screenshot 2025-12-08 120638.png" onclick="openLightbox(this)">
+          <img src="Screenshot 2025-12-08 115352.png" onclick="openLightbox(this)">
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ✅ FULLSCREEN IMAGE VIEWER -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img">
+  </div>
+
+  <!-- ✅ JAVASCRIPT -->
+  <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+
+    // Close with ESC key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
