@@ -464,23 +464,7 @@
           </div>
         </section>
 
-        <!-- NEW PROJECTS SECTION -->
-        <section class="card" id="projects">
-          <h3>Projects</h3>
-          <div class="entry">
-            <div class="row"><strong>In The Wake of Poseidon (Temporary Name)</strong><span class="muted">2025</span></div>
-            <p class="muted">
-              A top‑down action‑adventure game developed in GameMaker. Players explore farmlands, forests, and interior spaces while battling enemies, completing objectives, and uncovering a larger mystery that plagues the island.
-            </p>
-            <div class="project-grid" style="margin-top:12px">
-              
-              <img src="Screenshot 2025-12-08 114652.png" alt="In The Wake of Poseidon title screen">
-              <img src="Screenshot 2025-12-08 115413.png" alt="Interior dialogue scene">
-              <img src="Screenshot 2025-12-08 120638.png" alt="Outdoor enemy encounter">
-              <img src="Screenshot 2025-12-08 115352.png" alt="Farming gameplay scene">
-            </div>
-          </div>
-        </section>
+       
 
       </div>
     </main>
@@ -625,61 +609,6 @@
     <a href="#projects">Projects</a>
   </nav>
 
-  <!-- ✅ MAIN CONTENT -->
-  <div class="grid">
-
-    <!-- ✅ PROJECTS SECTION -->
-    <section class="card" id="projects">
-      <h3>Projects</h3>
-
-      <div class="entry">
-        <div class="row">
-          <strong>In The Wake of Poseidon (Temporary Name)</strong>
-          <span class="muted">2025</span>
-        </div>
-
-        <p class="muted">
-          A top-down action-adventure game developed in GameMaker. Players explore farmlands,
-          forests, and interior spaces while battling enemies, completing objectives, and
-          uncovering a larger mythological mystery inspired by Poseidon.
-        </p>
-
-        <!-- ✅ CLICKABLE IMAGE GRID -->
-        <div class="project-grid">
-          <img src="Screenshot 2025-12-08 114652.png" onclick="openLightbox(this)">
-          <img src="Screenshot 2025-12-08 115413.png" onclick="openLightbox(this)">
-          <img src="Screenshot 2025-12-08 120638.png" onclick="openLightbox(this)">
-          <img src="Screenshot 2025-12-08 115352.png" onclick="openLightbox(this)">
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- ✅ FULLSCREEN IMAGE VIEWER -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <span>&times;</span>
-    <img id="lightbox-img">
-  </div>
-
-  <!-- ✅ JAVASCRIPT -->
-  <script>
-    function openLightbox(img) {
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      lightboxImg.src = img.src;
-      lightbox.classList.add("active");
-    }
-
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.remove("active");
-    }
-
-    // Close with ESC key
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape") closeLightbox();
-    });
-  </script>
 
 </body>
 </html>
