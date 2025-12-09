@@ -127,8 +127,8 @@
       <section class="hero">
         <div class="intro" id="about">
           <div class="kicker">AP Scholar • 4.0 GPA</div>
-          <h2 class="title">I design playful software and build small games that teach me how to ship.</h2>
-          <p class="lead">High school student with a passion for game development. Comfortable in Java, Python, JavaScript, and experienced building side‑scrollers and top‑down dungeon crawlers in GameMaker.</p>
+          <h2 class="title">I design and build small projects that teach me how to develop games.</h2>
+          <p class="lead">High school student with a passion for game development. Comfortable in Java, Python, JavaScript, and experienced in building side‑scrollers and top‑down dungeon crawlers in GameMaker.</p>
           <div class="meta" aria-hidden="false">
             <div class="pill">Computer Science Club</div>
             <div class="pill">Vernon Hills, IL</div>
@@ -225,7 +225,7 @@
         <section class="card" id="interests">
           <h3>Interests & Hobbies</h3>
           <div class="entry">
-            <p class="muted">I enjoy learning and building games with GameMaker. Outside coding I like reading, sketching game ideas, and exploring level design.</p>
+            <p class="muted">I enjoy learning and building games with GameMaker. Outside of coding, I like reading, sketching game ideas, and exploring level design.</p>
           </div>
         </section>
       </div>
@@ -262,25 +262,6 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Theme toggle (light/dark subtle)
-    const themeBtn = document.getElementById('themeToggle');
-    let light = false;
-    themeBtn.addEventListener('click', () => {
-      light = !light; themeBtn.setAttribute('aria-pressed', light);
-      if(light){
-        document.documentElement.style.setProperty('--bg-1','#f6fbff');
-        document.documentElement.style.setProperty('--bg-2','#e8f2ff');
-        document.documentElement.style.setProperty('--text','#051026');
-        document.documentElement.style.setProperty('--muted','#475f7f');
-        document.documentElement.style.setProperty('--glass','rgba(5,16,36,0.04)');
-      } else {
-        document.documentElement.style.setProperty('--bg-1','#071028');
-        document.documentElement.style.setProperty('--bg-2','#0b1220');
-        document.documentElement.style.setProperty('--text','#eaf3ff');
-        document.documentElement.style.setProperty('--muted','#9fb3d6');
-        document.documentElement.style.setProperty('--glass','rgba(255,255,255,0.04)');
-      }
-    });
-
     // Resume modal logic
     const openResume = document.getElementById('openResume');
     const resumeModal = document.getElementById('resumeModal');
